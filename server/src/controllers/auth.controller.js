@@ -47,13 +47,13 @@ ctrlUser.singin = async (req, res) => {
     }, process.env.JWT_KEY);
     const serialized = serialize("token", token, {
       httpOnly: true,
-      domain: "https://popaweb.vercel.app",
+      domain: "https://popaweb.vercel.app/",
       sameSite: "strict",
       maxAge: 1000 * 60 * 60 * 24 * 7,
       path: "/"
     });
     try {
-      res.setHeader('Set-Cookie', [serialized]);
+      res.setHeader('Set-Cookie', serialized);
       return res.status(200).json({success: "Inicio exitoso"});
     } catch (error) {
       return res.status(400).json({message: "Token invalido"});
