@@ -19,7 +19,7 @@ const ImgDetails = () => {
   useEffect(() => {
 
     (async () => {
-      const res = await axios.get(`https://popaweb.vercel.app/imagenes/${params.id}`)
+      const res = await axios.get(`https://popaweb.vercel.app/api/v1/imagenes/${params.id}`)
       setImage(res.data.oneImage)
       setUser(res.data.user)
       console.log(User)
@@ -30,7 +30,7 @@ const ImgDetails = () => {
 
   useEffect(() => {
     (async()=>{
-      const res = await axios.get(`https://popaweb.vercel.app/imagenes/${params.id}/comment`)
+      const res = await axios.get(`https://popaweb.vercel.app/api/v1/imagenes/${params.id}/comment`)
       setResult(res.data)
     })()
   }, [params.id, result])
