@@ -44,7 +44,7 @@ ctrlUser.singin = async (req, res) => {
       exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7,
       name,
       role: "usuario"
-    }, process.env.JWT_KEY);
+    }, "secretojwt");
     const serialized = serialize("token", token, {
       httpOnly: true,
       domain: "popaweb.vercel.app",
