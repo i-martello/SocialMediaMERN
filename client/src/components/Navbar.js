@@ -13,7 +13,7 @@ const Navbar = () => {
 
   const logout =  async () => {
     console.log("hola");
-    await axios.get('https://popaweb.vercel.app/api/v1/logout', {withCredentials: true})
+    await axios.get('https://popaweb.vercel.app/logout', {withCredentials: true})
     setSession(false)
   };
 
