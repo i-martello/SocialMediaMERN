@@ -44,7 +44,7 @@ const ImgDetails = () => {
     const formData = new FormData();
     formData.append('comment', comment)
     
-    const res = await axios.post(`https://popaweb.vercel.app/${params.id}/comment`, formData,
+    const res = await axios.post(`https://popaweb.vercel.app/api/v1/${params.id}/comment`, formData,
       { headers: { 'Content-Type': 'application/json' } })
     console.log(res);
   }
@@ -54,7 +54,7 @@ const ImgDetails = () => {
 
   const handleDelete = async () => {
 
-    await axios.delete(`https://popaweb.vercel.app/${params.id}`)
+    await axios.delete(`https://popaweb.vercel.app/api/v1/${params.id}`)
     
   }
 
