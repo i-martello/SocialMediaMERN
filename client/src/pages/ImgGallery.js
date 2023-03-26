@@ -15,6 +15,7 @@ const ImgGallery = () => {
     (async () => {
       try {
         const res = await axios.get('https://popaweb.vercel.app')
+        console.log(res)
         if(!res.data.token){
         console.log(res.data)
         setImage(res.data)
