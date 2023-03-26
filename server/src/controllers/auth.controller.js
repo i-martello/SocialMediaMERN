@@ -47,7 +47,7 @@ ctrlUser.singin = async (req, res) => {
     }, process.env.JWT_KEY);
     const serialized = serialize("token", token, {
       httpOnly: true,
-      domain: "popawebapi.vercel.app",
+      domain: "popaweb.vercel.app",
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       maxAge: 1000 * 60 * 60 * 24 * 7,
