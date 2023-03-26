@@ -22,6 +22,7 @@ const ImgGallery = () => {
         }
         console.log(res.data.token);
       } catch (error) {
+        console.log(error)
         console.log("invalido")
       }
     })();
