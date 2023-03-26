@@ -22,7 +22,7 @@ const SingUp = () => {
 
       console.log(formData)
 
-      await axios.post('http://localhost:4000/registro', formData,
+      await axios.post('https://popaweb.vercel.app/registro', formData,
         { headers: { "Content-Type": "application/json" } }
       )
         .then(async (res) => {
