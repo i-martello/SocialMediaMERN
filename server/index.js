@@ -8,7 +8,7 @@ import cookieParser from 'cookie-parser'
 
 
 const corsOptions = {
-  origin: "https://popaweb.vercel.app/",
+  origin: "https://popaweb.vercel.app",
   credentials: true,
   optionSuccessStatus: 200
 }
