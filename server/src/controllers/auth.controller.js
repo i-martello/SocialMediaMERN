@@ -53,7 +53,7 @@ ctrlUser.singin = async (req, res) => {
       path: "/"
     });
     try {
-      res.setHeader('Set-Cookie', serialized);
+      res.cookies("token", token)
       return res.status(200).json({success: "Inicio exitoso"});
     } catch (error) {
       return res.status(400).json({message: "Token invalido"});
