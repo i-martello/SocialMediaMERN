@@ -46,11 +46,8 @@ ctrlUser.singin = async (req, res) => {
       role: "usuario"
     }, process.env.JWT_KEY);
     const serialized = serialize("token", token, {
-      httpOnly: true,
       domain: "popaweb.vercel.app",
-      sameSite: "strict",
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      path: "/"
     });
     try {
       res.setHeader('Set-Cookie', serialized);
