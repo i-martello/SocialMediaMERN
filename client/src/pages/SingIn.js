@@ -14,7 +14,7 @@ const SingIn = () => {
 
     e.preventDefault()
 
-    axios.post('https://popawebapi.vercel.app/v13/deployments/login', { name, password }, { withCredentials: true })
+    axios.post('https://popawebapi.vercel.app/login', { name, password }, { withCredentials: true })
       .then(response => {
 
         const { data } = response
