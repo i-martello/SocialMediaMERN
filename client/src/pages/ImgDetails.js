@@ -44,7 +44,7 @@ const ImgDetails = () => {
     const formData = new FormData();
     formData.append('comment', comment)
     
-    const res = await axios.post(`https://popawebapi.vercel.app/${params.id}/comment`, formData,
+    const res = await axios.post(`https://popawebapi.vercel.app/imagenes/${params.id}/comment`, formData,
       { headers: { 'Content-Type': 'application/json' } })
     console.log(res);
   }
