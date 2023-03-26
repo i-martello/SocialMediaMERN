@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
   if(token.data.decodedToken){
     return setSession(true)   
   }
-},[])
+},[Validation, session])
 
 useEffect(()=>{
   Validation()
