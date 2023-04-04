@@ -1,59 +1,61 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useGlobalContext } from '../context'
+import axios from "axios";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../context";
 
 const SingIn = () => {
-
   const { setSession } = useGlobalContext();
   const navigate = useNavigate();
-  const [name, setName] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    e.preventDefault()
-
-    axios.post('https://popawebapi.vercel.app/login', { name, password }, { withCredentials: true })
-      .then(response => {
-
-        const { data } = response
-        console.log(response)
+    axios
+      .post(
+        "http://localhost:5000/login",
+        { name, password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
+      .then((response) => {
+        const { data } = response;
+        console.log(response);
         if (!data.mensaje) {
           setSession(true);
           navigate(`/`);
         } else {
-          setError(data.mensaje)
-          console.log(error)
+          setError(data.mensaje);
+          console.log(error);
         }
-
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
-
   };
 
   return (
     <div>
       {error && (
-        <div className="alert mx-auto col-md-4 mx-auto mt-5 d-flex btn btn-danger cursor-pointer" onClick={() => setError(false)} role="alert">
+        <div
+          className="alert mx-auto col-md-4 mx-auto mt-5 d-flex btn btn-danger cursor-pointer"
+          onClick={() => setError(false)}
+          role="alert"
+        >
           {error}
-        </div>)
-      }
+        </div>
+      )}
       <div>
         <div className="col-md-3 mx-auto w-10">
           <div className="card mt-5 text-white rounded">
             <div className="card-header text-center pt-5">
-              <h1 className="h4 text-white">
-                Loguearse
-              </h1>
+              <h1 className="h4 text-white">Iniciar Sesión</h1>
             </div>
-            <img
-              className="w-50 mx-auto h-auto"
-              src="https://play-lh.googleusercontent.com/tmJe-2K54Fspu8jkOQGZaZt9lB7mq48GrqhhEibMlmosfJTwcpkltJPn9Oatvb34gho"
-              alt="Logo"
-            />
             <div className="card-body">
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -84,13 +86,17 @@ const SingIn = () => {
                 </button>
               </form>
             </div>
-
-            <p className="text-center">No tenes una cuenta? <Link href="/registro" className="text-info">Registrarse</Link></p>
+            <p className="text-center">
+              No tenes una cuenta?{" "}
+              <Link to="/registro" className="text-info">
+                Registrarse
+              </Link>
+            </p>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SingIn
+export default SingIn;

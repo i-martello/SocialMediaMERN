@@ -22,7 +22,7 @@ const SingUp = () => {
 
       console.log(formData)
 
-      await axios.post('https://popawebapi.vercel.app/registro', formData,
+      await axios.post('http://localhost:5000/registro', formData,
         { headers: { "Content-Type": "application/json" } }
       )
         .then(async (res) => {
@@ -57,7 +57,7 @@ const SingUp = () => {
           <div className="card bg-dark text-light">
             <div className="card-header pt-5">
               <h4 className="text-center">
-                Crear tu cuentovich
+                Crear tu cuenta
               </h4>
             </div>
             <div className="card-body">

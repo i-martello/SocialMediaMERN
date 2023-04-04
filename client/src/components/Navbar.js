@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MdOutlineLogin } from "react-icons/md";
 import { GoSignIn } from 'react-icons/go'
 import { Link} from "react-router-dom";
@@ -13,7 +13,7 @@ const Navbar = () => {
 
   const logout =  async () => {
     console.log("hola");
-    await axios.get('https://popaweb.vercel.app/logout', {withCredentials: true})
+    await axios.get('http://localhost:5000/logout', {withCredentials: true})
     setSession(false)
   };
 
@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">PopaWeb</Link>
+        <Link className="navbar-brand" to="/">DivertiWeb! (no soy muy creativo con los nombres)</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

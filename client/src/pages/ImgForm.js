@@ -24,7 +24,7 @@ const ImgForm = () => {
     formData.append('title', title);
     formData.append('description', description);
 
-    const res = await axios.post('https://popawebapi.vercel.app/publicar', formData, {
+    const res = await axios.post('http://localhost:5000/publicar', formData, {
       headers: {
         "Content-Type": "multipart/form-data"
       },

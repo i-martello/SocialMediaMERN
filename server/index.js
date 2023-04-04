@@ -8,17 +8,14 @@ import cookieParser from 'cookie-parser'
 
 
 const corsOptions = {
-  origin: "https://popaweb.vercel.app",
+  origin: "http://localhost:3000",
   credentials: true,
   optionSuccessStatus: 200
 }
 const app = express()
 config()
 
-
-app.set('port', process.env.PORT || 4000);
-
-
+app.set('port', process.env.PORT || 5000);
 
 // middlewares  
 app.use(cors(corsOptions));

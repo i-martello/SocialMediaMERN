@@ -9,7 +9,7 @@ const AppProvider = ({ children }) => {
 
   console.log(children)
   const Validation = useCallback( async()=>{
-    const token = await axios.get("https://popawebapi.vercel.app/validateJWT", {withCredentials: true})
+    const token = await axios.get("http://localhost:5000/validateJWT", {withCredentials: true})
     console.log(token);
   if(token.data.decodedToken){
     return setSession(true)   

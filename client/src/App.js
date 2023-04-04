@@ -17,7 +17,7 @@ function App() {
   const validation = useCallback(() => {
     if (!session && location.pathname === "/publicar") {
       navigate("/login");
-    } else if(session && (location.pathname === "/login" || location.pathname=== "/register")){
+    } else if(session && (location.pathname === "/login" || location.pathname=== "/registro")){
       navigate("/")
     }
   }, [location.pathname, navigate, session]);

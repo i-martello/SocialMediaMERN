@@ -40,6 +40,7 @@ ctrlUser.singin = async (req, res) => {
   const validPassword = await bcryptjs.compare(password, userValid.password);
   if (validPassword) {
     const { id, name } = UserSchema
+    console.log(req.body);
     const token = jwt.sign({
       exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7,
       name,
@@ -47,7 +48,6 @@ ctrlUser.singin = async (req, res) => {
     }, process.env.JWT_KEY);
     const serialized = serialize("token", token, {
       httpOnly: true,
-      domain: "popaweb.vercel.app",
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       maxAge: 1000 * 60 * 60 * 24 * 7,
