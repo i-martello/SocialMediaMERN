@@ -88,7 +88,7 @@ const SingUp = () => {
                     type="password"
                     className="form-control bg-dark text-white"
                     name="confirm_password"
-                    placeholder="Confirmala bobo"
+                    placeholder="Confirmar contraseña"
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>

@@ -59,12 +59,12 @@ const ImgForm = () => {
             <input
               type='text'
               className='form-control bg-dark text-light my-3 rounded-0'
-              placeholder='Ponele titulo a la virgada'
+              placeholder='Titulo del post'
               onChange={e => setTitle(e.target.value)}
             />
             <input type='text'
               className='form-control bg-dark text-light my-3 rounded-0'
-              placeholder='Mandale texto compa'
+              placeholder='Descripción'
               onChange={e => setDescription(e.target.value)} />
             <input type='file'
               className='form-control bg-dark text-light rounded-0'
