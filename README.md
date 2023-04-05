@@ -1,4 +1,4 @@
-## Pagina Principal
+## Página Principal
 
 ![App Screenshot](https://res.cloudinary.com/dkqlhd9l3/image/upload/v1680673168/divertyweb_sgzkd5.gif)
 
