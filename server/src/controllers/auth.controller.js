@@ -13,7 +13,6 @@ ctrlUser.signup = async (req, res) => {
   const { name, password } = req.body
 
   const User = await UserSchema.findOne({ name }) || false
-  console.log(User)
 
   if (name.length < 5 || name.length > 20) {
     mgs = "El nombre tiene que tener entre 5 y 20 caracteres"
@@ -39,8 +38,6 @@ ctrlUser.singin = async (req, res) => {
   }
   const validPassword = await bcryptjs.compare(password, userValid.password);
   if (validPassword) {
-    const { id, name } = UserSchema
-    console.log(req.body);
     const token = jwt.sign({
       exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7,
       name,

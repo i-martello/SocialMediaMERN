@@ -6,16 +6,16 @@ ctrlComment.post = async (req, res) => {
   if (req.body.comment) {
     const imagen_id = req.params.id;
     const comment = req.body.comment;
+    const name = req.body.name;
 
-    console.log(global.verifySession);
 
     if (comment.length > 300) {
       res.json({ error: "mucho texto" });
     } else {
       const newComment = new CommentSchema({
         image_id: imagen_id,
-        name: global.verifySession,
-        comment: comment,
+        name,
+        comment,
       });
       await newComment.save();
     }

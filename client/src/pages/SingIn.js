@@ -25,7 +25,6 @@ const SingIn = () => {
       )
       .then((response) => {
         const { data } = response;
-        console.log(response);
         if (!data.mensaje) {
           setSession(true);
           navigate(`/`);

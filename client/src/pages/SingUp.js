@@ -20,15 +20,12 @@ const SingUp = () => {
       formData.append('name', name)
       formData.append('password', password)
 
-      console.log(formData)
 
       await axios.post('http://localhost:5000/registro', formData,
         { headers: { "Content-Type": "application/json" } }
       )
         .then(async (res) => {
-          console.log(res.data)
           setCorrectPassword(res.data.mgs)
-          console.log(CorrectPassword)
           if (!res.data.mgs) {
             navigate('/login')
           }

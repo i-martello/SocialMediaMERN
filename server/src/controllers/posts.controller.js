@@ -11,7 +11,6 @@ let ctrlPosts = {}
   try { 
 
     const cloudinary_image = await uploadImage(req.file.path)
-    console.log(cloudinary_image)
 
     const newImage = await new modelImage({
       title,
