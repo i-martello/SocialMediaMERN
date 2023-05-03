@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGlobalContext } from "../context";
+import { io } from 'socket.io-client'
+
+const socket = io('http://localhost:5000');
 
 const ImgDetails = () => {
   const navigate = useNavigate();
@@ -27,28 +30,37 @@ const ImgDetails = () => {
     })();
   }, [params.id, User]);
 
-  useEffect(() => {
-    (async () => {
-      const res = await axios.get(
-        `http://localhost:5000/imagenes/${params.id}/comment`
-      );
-      setResult(res.data);
-    })();
-  }, [params.id, result]);
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await axios.get(
+  //       `http://localhost:5000/imagenes/${params.id}/comment`
+  //     );
+  //     setResult(res.data);
+  //   })();
+  // }, [params.id, result]);
+
+  useEffect(()=>{
+    console.log("hola");
+    socket.on('comments', async (msg)=>{
+      const mensajesID = msg.filter(msg => msg.image_id === params.id)
+      setResult(mensajesID);
+    })
+  },[params.id])
+  
+
+  useEffect(()=>{
+    socket.on('newcomments', async (msg)=>{
+      const mensajesID = msg.filter(msg => msg.image_id === params.id)
+      setResult(mensajesID);
+    })
+  },[params.id, result,])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("hola");
     if (dataSession) {
-      const formData = new FormData();
-      formData.append("name", dataSession.name);
-      formData.append("comment", comment);
-      setComment("");
-      await axios.post(
-        `http://localhost:5000/imagenes/${params.id}/comment`,
-        formData,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      socket.emit('comments', {name: dataSession.name, comment, image_id : params.id});
+      setComment("")
     } else {
       navigate("/login");
     }
