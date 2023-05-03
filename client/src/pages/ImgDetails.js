@@ -40,7 +40,6 @@ const ImgDetails = () => {
   // }, [params.id, result]);
 
   useEffect(()=>{
-    console.log("hola");
     socket.on('comments', async (msg)=>{
       const mensajesID = msg.filter(msg => msg.image_id === params.id)
       setResult(mensajesID);
@@ -57,7 +56,6 @@ const ImgDetails = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("hola");
     if (dataSession) {
       socket.emit('comments', {name: dataSession.name, comment, image_id : params.id});
       setComment("")
