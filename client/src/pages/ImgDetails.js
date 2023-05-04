@@ -38,26 +38,25 @@ const ImgDetails = () => {
   //     setResult(res.data);
   //   })();
   // }, [params.id, result]);
+  
 
   useEffect(()=>{
     socket.on('comments', async (msg)=>{
       const mensajesID = msg.filter(msg => msg.image_id === params.id)
+      console.log(mensajesID);
       setResult(mensajesID);
     })
-  },[params.id])
-  
 
-  useEffect(()=>{
-    socket.on('newcomments', async (msg)=>{
+    socket.on('msg', async (msg)=>{
       const mensajesID = msg.filter(msg => msg.image_id === params.id)
       setResult(mensajesID);
     })
-  },[params.id, result,])
+  },[params.id, result])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (dataSession) {
-      socket.emit('comments', {name: dataSession.name, comment, image_id : params.id});
+      socket.emit('msg', {name: dataSession.name, comment, image_id : params.id});
       setComment("")
     } else {
       navigate("/login");

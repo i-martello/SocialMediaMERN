@@ -13,12 +13,11 @@ export const socketFunction = (server) => {
       const comentarios = await commentSchema.find({}).sort({ createdAt: -1 });
       io.emit("comments", comentarios);
       
-      socket.on("comments", async(msg)=> {
+      socket.on("msg", async(msg)=> {
         const newComment = await new commentSchema(msg);
         await newComment.save();
         const comentarios = await commentSchema.find({}).sort({ createdAt: -1 });
-        console.log(comentarios);
-        io.emit("newcomments", comentarios);
+        io.emit("msg", comentarios);
       } )
   });
   

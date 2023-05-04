@@ -22,6 +22,11 @@ const ImgGallery = () => {
     })();
   }, [params.id]);
 
+  const handleClick = (item) => {
+    navigate(`/imagenes/${item.cloud_id}`)
+    window.location.reload();
+  }
+
   return (
     <div>
       <div className="Container-gallery">
@@ -30,7 +35,7 @@ const ImgGallery = () => {
             <article
               className="articleGallery card-image"
               key={item._id}
-              onClick={() => navigate(`/imagenes/${item.cloud_id}`)}
+              onClick={() => handleClick(item)}
             >
               <div className="articleImage">
                 <img src={item.url} alt="" className="articleImg" />
